@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f1c2e;
+    color: #eef2f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  
+  #message {
+    font-size: 1.1rem;
+    min-height: 1.5em;
+    margin-bottom: 24px;
+    color: #7fd6c2;
+    font-weight: 600;
+  }
+  
+  .boards {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .boards h2 {
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9fb3c8;
+    margin-bottom: 10px;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(10, 32px);
+    grid-template-rows: repeat(10, 32px);
+    gap: 2px;
+    background: #1b2b40;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .cell {
+    width: 32px;
+    height: 32px;
+    background: #2c4258;
+    border-radius: 3px;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+  
+  .cell.ship {
+    background: #5b7791;
+  }
+  
+  .cell.hit {
+    background: #e74c3c;
+    position: relative;
+  }
+  
+  .cell.hit::after {
+    content: '✕';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .cell.miss {
+    background: #16222f;
+  }
+  
+  .cell.miss::after {
+    content: '•';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7f92;
+  }
+  
+  .cell.miss {
+    position: relative;
+  }
+  
+  #enemy-board .cell:not(.hit):not(.miss):hover {
+    background: #3d5a76;
+    cursor: pointer;
+    transform: scale(1.08);
+  }
+  
+  .game-over #enemy-board .cell {
+    cursor: default;
+    pointer-events: none;
+  }
